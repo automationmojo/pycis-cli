@@ -1,10 +1,3 @@
-# Python Package Template
+# Cogsworth CLI Tools
 
-This is a template repository that can be used to start off a python package project.
-
-# Features of this Template
-
-* Machine Setup
-* Virtual Environment Setup (Poetry)
-* PyPi Publishing
-* Sphinx Documentation
+Provides a set of CLI tools for working with the Cogsworth continuous integration system
