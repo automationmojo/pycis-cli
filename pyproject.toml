@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "<package name>"
-description = "<package description>"
+name = "cogsworth-cli"
+description = "Cogsworth CLI Tools"
 version = "0.0.1"
 authors = []
 readme = "README.rst"
@@ -13,7 +13,7 @@ classifiers = [
 keywords = [
     "python"
 ]
-packages = [{include="mojo", from="source/packages"}]
+packages = [{include="cogsworth", from="source/packages"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<4.0"
