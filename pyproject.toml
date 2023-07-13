@@ -17,6 +17,7 @@ packages = [{include="cogsworth", from="source/packages"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<4.0"
+click = "^8.1.4"
 
 [tool.poetry.group.dev.dependencies]
 myst-parser = "^0.18.1"
