@@ -20,26 +20,26 @@ HELP_HOST = "A CouchDB host name."
 HELP_PORT = "The CouchDB port number."
 HELP_USERNAME = "The CouchDB username who can write to a database."
 HELP_PASSWORD = "The CouchDB password for the specified user."
-HELP_RESULTS = "A folder containing test results to publish"
 HELP_EXPIRY = "A number of days to persist the up uploaded results."
+HELP_FILENAME = "The document to publish."
 
 @click.command("publish")
 @click.option("--host", required=True, type=str, help=HELP_HOST)
 @click.option("--port", required=True, type=int, default=5984, help=HELP_PORT)
 @click.option("--username", required=False, type=str, help=HELP_USERNAME)
 @click.option("--password", required=False, type=str, help=HELP_PASSWORD)
-@click.option("--results", required=True, type=str, help=HELP_RESULTS)
 @click.option("--expiry-days", required=False, default=365, type=int, help=HELP_EXPIRY)
-def command_datastore_couchdb_publish_testrun(host: str, port: int, username: str, password: str, results, expiry_days):
+@click.argument('filename', help=HELP_FILENAME)
+def command_datastore_couchdb_publish(host: str, port: int, username: str, password: str, expiry_days: int, filename: str):
     
     try:
         import couchdb
     except ImportError:
-        print("You must install 'CouchDB in order to be able to publish to a CouchDB data store.", file=sys.stderr)
+        print("You must install 'CouchDB' in order to be able to publish to a CouchDB data store.", file=sys.stderr)
         exit(1)
 
-    if not os.path.exists(results):
-        errmsg = "The specified output folder does not exist. folder={}".format(results)
+    if not os.path.exists(filename):
+        errmsg = f"The specified document does not exist. filename={filename}"
         click.BadParameter(errmsg)
     
     protocol = "http"
@@ -57,30 +57,15 @@ def command_datastore_couchdb_publish_testrun(host: str, port: int, username: st
 
     expiry_date = datetime.now() + timedelta(days=expiry_days)
 
-    # Make sure the summary document and the tests document exists
-    summary_file = os.path.join(results, "testrun_summary.json")
-    testresults_file = os.path.join(results, "testrun_results.jsos")
+    docobj = None
+    with open(filename, 'r') as sf:
+        docobj = json.load(sf)
 
-    from mojo.xmods.jsos import load_jsos_stream_from_file
-
-    summary = None
-    with open(summary_file, 'r') as sf:
-        summary = json.load(sf)
-
-    trstream = load_jsos_stream_from_file(testresults_file)
+    docobj["expiry_date"] = expiry_date.isoformat()
 
     dbsvr = couchdb.Server(connection)
 
-    testresults = dbsvr['cogsworth']
-
-    document = {
-        "summary": summary,
-        "version": "1.0",
-        "type": "testrun",
-        "testresults": trstream,
-        "expiry_date": expiry_date.isoformat()
-    }
-
-    testresults.save(document)
+    cogsworth = dbsvr['cogsworth']
+    cogsworth.save(docobj)
 
     return

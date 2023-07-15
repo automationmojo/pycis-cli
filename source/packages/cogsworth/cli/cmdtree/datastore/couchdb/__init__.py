@@ -10,8 +10,12 @@ __license__ = "MIT"
 
 import click
 
-from cogsworth.cogsw.cli.cmdtree.datastore.couchdb.initialize import command_datastore_couchdb_initialize
-from cogsworth.cogsw.cli.cmdtree.datastore.couchdb.publish import command_datastore_couchdb_publish
+from cogsworth.cogsw.cli.cmdtree.datastore.couchdb.initialize \
+    import command_datastore_couchdb_initialize
+from cogsworth.cogsw.cli.cmdtree.datastore.couchdb.docment \
+    import command_datastore_couchdb_document
+from cogsworth.cogsw.cli.cmdtree.datastore.couchdb.publish \
+    import command_datastore_couchdb_publish
 
 
 @click.group("couchdb", help="Contains commands datastore test results to CouchDB.")
@@ -19,4 +23,5 @@ def group_cogsw_datastore_couchdb():
     return
 
 group_cogsw_datastore_couchdb.add_command(command_datastore_couchdb_initialize)
+group_cogsw_datastore_couchdb.add_command(command_datastore_couchdb_document)
 group_cogsw_datastore_couchdb.add_command(command_datastore_couchdb_publish)

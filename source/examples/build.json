@@ -1,0 +1,38 @@
+
+{
+    "id": "c9d253c4-7b27-4507-9f0f-884bfca5d6c6",
+    "dtype": "build",
+    "start": "2023-07-14T13:44:03.112707",
+    "stop": "2023-07-14T13:44:23.112707",
+    "branch": "main",
+    "revision": "fbe8ca7dcbca22c9dff506b9e9881e19cf1e3576",
+    "release": "Product Core 1.0.0",
+    "job": {
+        "id": "(not-set)",
+        "initiator": "(not-set)",
+        "label": "(not-set)",
+        "name": "(not-set)",
+        "owner": "(not-set)",
+        "type": "JobType.TestRun"
+    },
+    "byproducts": [
+        {
+            "product": "OS Build",
+            "platform": "Player-Linux",
+            "arch": "Arm",
+            "flavor": "DEBUG",
+            "buildno": "test-branch-123456",
+            "package": "https://storage.company.com/builds/test-branch/test-branch-123456/node.linux.arm.debug.zip",
+            "version": "1.0.0"
+        }
+    ],
+    "changelist": [
+        {
+            "commit": "9701e1dc5a0b473e8fdefcb042a8bb08b0da7a5c",
+            "title": "Click based cli.",
+            "description": "Did some work on moving over to using click for the cli",
+            "author": "myron.walker",
+            "date": "Wed Mar 10 20:46:04 2021 -0800"
+        }
+    ]
+}

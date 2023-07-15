@@ -24,7 +24,7 @@ HELP_EXPIRY = "A number of days to persist the up uploaded results."
 
 MAP_TESTRUN_BY_BRANCH = """
 function (doc) {
-    if (doc.type == 'testrun') {
+    if (doc.dtype == 'testrun') {
         if (doc.summary.build.branch && doc.summary.build.build)
         {
             key = doc.summary.build.branch
@@ -37,7 +37,7 @@ function (doc) {
 
 MAP_TESTRUN_BY_PIPELINE = """
 function (doc) {
-    if (doc.type == 'testrun') {
+    if (doc.dtype == 'testrun') {
         if (doc.summary.pipeline.name && doc.summary.pipeline.id)
         {
             key = doc.summary.pipeline.id
