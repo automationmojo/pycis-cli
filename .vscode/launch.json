@@ -112,6 +112,22 @@
             ],
             "console": "integratedTerminal",
             "justMyCode": false
-        }
+        },
+        {
+            "name": "Doc: TestRun - Create",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/source/packages/pycis/cli/pycis_command.py",
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "document",
+                "testrun",
+                "create",
+                "--results=/home/myron/mjr/results/testresults/2023-06-25T2106!48.804103",
+                "${workspaceFolder}/source/examples/gen-testrun.json"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
     ]
 }

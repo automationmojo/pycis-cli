@@ -34,11 +34,13 @@ def command_pycis_document_testrun_create(results: str, filename: str):
     trstream = load_jsos_stream_from_file(testresults_file)
 
     document = {
-        "summary": summary,
         "dversion": "1.0",
         "dtype": "testrun",
-        "testresults": trstream
+        "resultitems": trstream
     }
+
+    document.update(summary)
+
 
     with open(filename, 'w') as of:
         json.dump(document, of, indent=4)
