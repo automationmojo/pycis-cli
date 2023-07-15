@@ -1,8 +1,8 @@
-=======================
-Cogsworth CLI Tools
-=======================
+=========================================================
+Python Continuous Integration System - CLI Tools  (PyCIS)
+=========================================================
 
-Provides a set of CLI tools for working with the Cogsworth continuous integration system.
+Provides a set of CLI tools for working with the PyCIS continuous integration system.
 
 ==========
 References

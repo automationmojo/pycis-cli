@@ -9,14 +9,14 @@ __license__ = "MIT"
 
 import click
 
-from cogsworth.cli.cmdtree.datastore.couchdb import group_cogsw_datastore_couchdb
-from cogsworth.cli.cmdtree.datastore.mongodb import group_cogsw_datastore_mongodb
+from pycis.cli.cmdtree.datastore.couchdb import group_pycis_datastore_couchdb
+from pycis.cli.cmdtree.datastore.mongodb import group_pycis_datastore_mongodb
 
 datastore_HELP = "Contains commands groups for datastore test results to different types of data stores."
 
 @click.group("datastore", help=datastore_HELP)
-def group_cogsw_datastore():
+def group_pycis_datastore():
     return
 
-group_cogsw_datastore.add_command(group_cogsw_datastore_couchdb)
-group_cogsw_datastore.add_command(group_cogsw_datastore_mongodb)
+group_pycis_datastore.add_command(group_pycis_datastore_couchdb)
+group_pycis_datastore.add_command(group_pycis_datastore_mongodb)

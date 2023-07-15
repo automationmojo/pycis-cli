@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "cogsworth-cli"
-description = "Cogsworth CLI Tools"
+name = "pycis-cli"
+description = "Pycis CLI Tools"
 version = "0.0.1"
 authors = []
 readme = "README.rst"
@@ -13,7 +13,7 @@ classifiers = [
 keywords = [
     "python"
 ]
-packages = [{include="cogsworth", from="source/packages"}]
+packages = [{include="pycis", from="source/packages"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<4.0"
@@ -23,7 +23,7 @@ couchdb = {version = "^1.2", optional = true}
 mojo-xmodules = ">=0.0.55 <0.1.0"
 
 [tool.poetry.scripts]
-greet = "cogsworth.cli.cogsw_command:cogsw_root_command"
+greet = "pycis.cli.pycis_command:pycis_root_command"
 
 [tool.poetry.extras]
 mongodb = ["pymongo"]

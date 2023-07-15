@@ -1,0 +1,39 @@
+{
+    "id": "c9d253c4-7b27-4507-9f0f-884bfca5d6c6",
+    "dtype": "build",
+    "dversion": "1.0",
+    "start": "2023-07-14T13:44:03.112707",
+    "stop": "2023-07-14T13:56:15.233425",
+    "branch": "main",
+    "revision": "fbe8ca7dcbca22c9dff506b9e9881e19cf1e3576",
+    "release": "Product Core 1.0.0",
+    "job": {
+        "name": "Custome OS Build",
+        "id": "430ed498-a1e0-46f7-b3d1-becaddfb17bb",
+        "initiator": "build-bot",
+        "label": "builder",
+        "owner": "george",
+        "type": "Build"
+    },
+    "byproducts": [
+        {
+            "product": "OS Build",
+            "platform": "Device-Linux",
+            "arch": "Arm",
+            "buildno": "test-branch-123456",
+            "flavor": "release",
+            "package": "https://storage.company.com/builds/test-branch/test-branch-123456/node.linux.arm.debug.zip",
+            "version": "1.0.0"
+        }
+    ],
+    "changelist": [
+        {
+            "commit": "9701e1dc5a0b473e8fdefcb042a8bb08b0da7a5c",
+            "title": "Click based cli.",
+            "description": "Did some work on moving over to using click for the cli",
+            "author": "myron.walker",
+            "date": "Wed Mar 10 20:46:04 2021 -0800"
+        }
+    ],
+    "archive": "https://storage.company.com/builds/test-branch/test-branch-123456/"
+}

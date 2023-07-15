@@ -21,7 +21,7 @@ HELP_EXPIRY = "A number of days to persist the up uploaded results."
 @click.command("create")
 @click.option("--results", required=True, type=click.Path(exists=True, file_okay=False), help=HELP_RESULTS)
 @click.argument('filename', metavar='<testrun document>', type=click.Path(dir_okay=False))
-def command_cogsw_document_testrun_create(results: str, filename: str):
+def command_pycis_document_testrun_create(results: str, filename: str):
 
     # Make sure the summary document and the tests document exists
     summary_file = os.path.join(results, "testrun_summary.json")

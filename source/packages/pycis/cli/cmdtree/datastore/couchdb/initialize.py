@@ -14,7 +14,7 @@ import click
 
 from mojo.xmods.xclick import NORMALIZED_STRING
 
-from cogsworth.cli.cmdtree.datastore.constants import COGSWORTH_DB_BYPRODUCTS
+from pycis.cli.cmdtree.datastore.constants import PYCIS_DB_BYPRODUCTS
 
 HELP_HOST = "A CouchDB host name."
 HELP_PORT = "The CouchDB port number."
@@ -52,7 +52,7 @@ function (doc) {
 @click.option("--port", required=True, type=click.INT, default=5984, help=HELP_PORT)
 @click.option("--username", required=False, type=NORMALIZED_STRING, help=HELP_USERNAME)
 @click.option("--password", required=False, type=NORMALIZED_STRING, help=HELP_PASSWORD)
-def command_cogsw_datastore_couchdb_initialize(
+def command_pycis_datastore_couchdb_initialize(
     host: str, port: int, username: str, password: str):
     
     try:
@@ -78,7 +78,7 @@ def command_cogsw_datastore_couchdb_initialize(
 
     if 'testresults' not in dbsvr:
 
-        database = dbsvr.create(COGSWORTH_DB_BYPRODUCTS)
+        database = dbsvr.create(PYCIS_DB_BYPRODUCTS)
 
         data = {
             "_id": f"_design/default",

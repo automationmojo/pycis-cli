@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-.. module:: cogsw_command
+.. module:: pycis_command
     :platform: Darwin, Linux, Unix, Windows
-    :synopsis: The script entrypoint for the 'cogsw' command.
+    :synopsis: The script entrypoint for the 'pycis' command.
 
 .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
 """
@@ -18,14 +18,14 @@ __license__ = "MIT"
 
 import click
 
-from cogsworth.cli.cmdtree.datastore import group_cogsw_datastore
-from cogsworth.cli.cmdtree.document import group_cogsw_document
+from pycis.cli.cmdtree.datastore import group_pycis_datastore
+from pycis.cli.cmdtree.document import group_pycis_document
 
 
-@click.group("cogsw")
+@click.group("pycis")
 @click.option('-v', '--verbose', count=True)
 @click.pass_context
-def cogsw_root_command(ctx, verbose):
+def pycis_root_command(ctx, verbose):
 
     if verbose == 0:
         ctx.interactive = True
@@ -42,8 +42,8 @@ def cogsw_root_command(ctx, verbose):
 
     return
 
-cogsw_root_command.add_command(group_cogsw_datastore)
-cogsw_root_command.add_command(group_cogsw_document)
+pycis_root_command.add_command(group_pycis_datastore)
+pycis_root_command.add_command(group_pycis_document)
 
 if __name__ == '__main__':
-    cogsw_root_command()
+    pycis_root_command()
