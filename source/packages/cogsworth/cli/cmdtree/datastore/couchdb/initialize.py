@@ -8,19 +8,18 @@ __email__ = "myron.walker@gmail.com"
 __status__ = "Development" # Prototype, Development or Production
 __license__ = "MIT"
 
-import json
-import os
 import sys
 
-from datetime import datetime, timedelta
-
 import click
+
+from mojo.xmods.xclick import NORMALIZED_STRING
+
+from cogsworth.cli.cmdtree.datastore.constants import COGSWORTH_DB_BYPRODUCTS
 
 HELP_HOST = "A CouchDB host name."
 HELP_PORT = "The CouchDB port number."
 HELP_USERNAME = "The CouchDB username who can create a database."
 HELP_PASSWORD = "The CouchDB password for the specified user."
-HELP_EXPIRY = "A number of days to persist the up uploaded results."
 
 MAP_TESTRUN_BY_BRANCH = """
 function (doc) {
@@ -49,12 +48,12 @@ function (doc) {
 """
 
 @click.command("initialize")
-@click.option("--host", required=True, type=str, help=HELP_HOST)
-@click.option("--port", required=True, type=int, default=5984, help=HELP_PORT)
-@click.option("--username", required=False, type=str, help=HELP_USERNAME)
-@click.option("--password", required=False, type=str, help=HELP_PASSWORD)
-@click.option("--expiry-days", required=False, default=365, type=int, help=HELP_EXPIRY)
-def command_datastore_couchdb_initialize(host: str, port: int, username: str, password: str, expiry_days: int):
+@click.option("--host", required=True, type=NORMALIZED_STRING, help=HELP_HOST)
+@click.option("--port", required=True, type=click.INT, default=5984, help=HELP_PORT)
+@click.option("--username", required=False, type=NORMALIZED_STRING, help=HELP_USERNAME)
+@click.option("--password", required=False, type=NORMALIZED_STRING, help=HELP_PASSWORD)
+def command_cogsw_datastore_couchdb_initialize(
+    host: str, port: int, username: str, password: str):
     
     try:
         import couchdb
@@ -75,13 +74,11 @@ def command_datastore_couchdb_initialize(host: str, port: int, username: str, pa
     
     connection = f"{protocol}://{connection}"
 
-    expiry_date = datetime.now() + timedelta(days=expiry_days)
-
     dbsvr = couchdb.Server(connection)
 
     if 'testresults' not in dbsvr:
 
-        database = dbsvr.create('cogsworth')
+        database = dbsvr.create(COGSWORTH_DB_BYPRODUCTS)
 
         data = {
             "_id": f"_design/default",

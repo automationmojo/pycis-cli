@@ -12,6 +12,106 @@
             "console": "integratedTerminal",
             "justMyCode": false,
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Doc: Build - Initialize",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/source/packages/cogsworth/cli/cogsw_command.py",
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "document",
+                "build",
+                "initialize",
+                "--id=c9d253c4-7b27-4507-9f0f-884bfca5d6c6",
+                "--start='2023-07-14T13:44:03.112707'",
+                "--branch=main",
+                "--revision=fbe8ca7dcbca22c9dff506b9e9881e19cf1e3576",
+                "--release='Product Core 1.0.0'",
+                "${workspaceFolder}/source/examples/gen-build.json"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Doc: Build - Add By-Product",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/source/packages/cogsworth/cli/cogsw_command.py",
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "document",
+                "build",
+                "add-by-product",
+                "--product='OS Build'",
+                "--platform=Device-Linux",
+                "--arch=Arm",
+                "--buildno=test-branch-123456",
+                "--flavor=release",
+                "--package=https://storage.company.com/builds/test-branch/test-branch-123456/node.linux.arm.debug.zip",
+                "--version='1.0.0'",
+                "${workspaceFolder}/source/examples/gen-build.json"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Doc: Build - Add Change",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/source/packages/cogsworth/cli/cogsw_command.py",
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "document",
+                "build",
+                "add-change",
+                "--commit=9701e1dc5a0b473e8fdefcb042a8bb08b0da7a5c",
+                "--title='Click based cli.'",
+                "--description='Did some work on moving over to using click for the cli'",
+                "--author=myron.walker",
+                "--date='Wed Mar 10 20:46:04 2021 -0800'",
+                "${workspaceFolder}/source/examples/gen-build.json"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Doc: Build - Set Job Detail",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/source/packages/cogsworth/cli/cogsw_command.py",
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "document",
+                "build",
+                "set-job-detail",
+                "--id='430ed498-a1e0-46f7-b3d1-becaddfb17bb'",
+                "--name='Custome OS Build'",
+                "--initiator='build-bot'",
+                "--label='builder'",
+                "--owner='george'",
+                "--type='Build'",
+                "${workspaceFolder}/source/examples/gen-build.json"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Doc: Build - Update",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/source/packages/cogsworth/cli/cogsw_command.py",
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "document",
+                "build",
+                "update",
+                "--stop='2023-07-14T13:56:15.233425'",
+                "--archive='https://storage.company.com/builds/test-branch/test-branch-123456/'",
+                "${workspaceFolder}/source/examples/gen-build.json"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
         }
     ]
 }

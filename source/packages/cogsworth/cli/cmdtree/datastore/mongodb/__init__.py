@@ -10,11 +10,11 @@ __license__ = "MIT"
 
 import click
 
-from cogsworth.cli.cmdtree.datastore.mongodb.publish import command_datastore_mongodb_publish
+from cogsworth.cli.cmdtree.datastore.mongodb.publish import command_cogsw_datastore_mongodb_publish
 
 
 @click.group("mongodb", help="Contains commands datastore test results to MongoDB.")
 def group_cogsw_datastore_mongodb():
     return
 
-group_cogsw_datastore_mongodb.add_command(command_datastore_mongodb_publish)
+group_cogsw_datastore_mongodb.add_command(command_cogsw_datastore_mongodb_publish)

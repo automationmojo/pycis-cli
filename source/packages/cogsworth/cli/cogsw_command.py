@@ -19,6 +19,7 @@ __license__ = "MIT"
 import click
 
 from cogsworth.cli.cmdtree.datastore import group_cogsw_datastore
+from cogsworth.cli.cmdtree.document import group_cogsw_document
 
 
 @click.group("cogsw")
@@ -42,6 +43,7 @@ def cogsw_root_command(ctx, verbose):
     return
 
 cogsw_root_command.add_command(group_cogsw_datastore)
+cogsw_root_command.add_command(group_cogsw_document)
 
 if __name__ == '__main__':
     cogsw_root_command()

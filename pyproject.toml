@@ -20,7 +20,7 @@ python = ">=3.8,<4.0"
 click = "^8.1.4"
 pymongo = {extras = ["srv"], version = "^4.0.0", optional = true}
 couchdb = {version = "^1.2", optional = true}
-mojo-xmodules = "^0.0.52"
+mojo-xmodules = ">=0.0.55 <0.1.0"
 
 [tool.poetry.scripts]
 greet = "cogsworth.cli.cogsw_command:cogsw_root_command"

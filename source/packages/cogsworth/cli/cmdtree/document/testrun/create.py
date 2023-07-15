@@ -13,23 +13,19 @@ import os
 
 import click
 
+from mojo.xmods.jsos import load_jsos_stream_from_file
+
 HELP_RESULTS = "A folder containing test results to publish"
 HELP_EXPIRY = "A number of days to persist the up uploaded results."
 
 @click.command("create")
-@click.option("--results", required=True, type=str, help=HELP_RESULTS)
-@click.argument('filename')
-def command_datastore_couchdb_publish_testrun(results: str, filename: str):
-    
-    if not os.path.exists(results):
-        errmsg = "The specified result folder does not exist. folder={}".format(results)
-        click.BadParameter(errmsg)
+@click.option("--results", required=True, type=click.Path(exists=True, file_okay=False), help=HELP_RESULTS)
+@click.argument('filename', metavar='<testrun document>', type=click.Path(dir_okay=False))
+def command_cogsw_document_testrun_create(results: str, filename: str):
 
     # Make sure the summary document and the tests document exists
     summary_file = os.path.join(results, "testrun_summary.json")
     testresults_file = os.path.join(results, "testrun_results.jsos")
-
-    from mojo.xmods.jsos import load_jsos_stream_from_file
 
     summary = None
     with open(summary_file, 'r') as sf:
@@ -39,12 +35,12 @@ def command_datastore_couchdb_publish_testrun(results: str, filename: str):
 
     document = {
         "summary": summary,
-        "version": "1.0",
+        "dversion": "1.0",
         "dtype": "testrun",
         "testresults": trstream
     }
 
     with open(filename, 'w') as of:
-        json.dump(document, of)
+        json.dump(document, of, indent=4)
 
     return

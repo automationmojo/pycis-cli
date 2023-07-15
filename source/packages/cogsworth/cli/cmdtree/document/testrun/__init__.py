@@ -11,14 +11,14 @@ __license__ = "MIT"
 import click
 
 
-from cogsworth.cli.cmdtree.datastore.couchdb.document.testrun.create \
-    import command_datastore_couchdb_document_testrun_create
+from cogsworth.cli.cmdtree.document.testrun.create \
+    import command_cogsw_document_testrun_create
 
 
 @click.group("testrun", help="Contains commands for creating a cogsworth 'testrun' document.")
-def group_cogsw_datastore_couchdb_document_testrun():
+def group_cogsw_document_testrun():
     return
 
-group_cogsw_datastore_couchdb_document_testrun.add_command(
-    command_datastore_couchdb_document_testrun_create
+group_cogsw_document_testrun.add_command(
+    command_cogsw_document_testrun_create
 )

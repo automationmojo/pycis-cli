@@ -16,6 +16,10 @@ from datetime import datetime, timedelta
 
 import click
 
+from mojo.xmods.xclick import NORMALIZED_STRING
+
+from cogsworth.cli.cmdtree.datastore.constants import COGSWORTH_DB_BYPRODUCTS
+
 HELP_HOST = "A CouchDB host name."
 HELP_PORT = "The CouchDB port number."
 HELP_USERNAME = "The CouchDB username who can write to a database."
@@ -24,13 +28,14 @@ HELP_EXPIRY = "A number of days to persist the up uploaded results."
 HELP_FILENAME = "The document to publish."
 
 @click.command("publish")
-@click.option("--host", required=True, type=str, help=HELP_HOST)
-@click.option("--port", required=True, type=int, default=5984, help=HELP_PORT)
-@click.option("--username", required=False, type=str, help=HELP_USERNAME)
-@click.option("--password", required=False, type=str, help=HELP_PASSWORD)
-@click.option("--expiry-days", required=False, default=365, type=int, help=HELP_EXPIRY)
-@click.argument('filename', help=HELP_FILENAME)
-def command_datastore_couchdb_publish(host: str, port: int, username: str, password: str, expiry_days: int, filename: str):
+@click.option("--host", required=True, type=NORMALIZED_STRING, help=HELP_HOST)
+@click.option("--port", required=True, type=click.INT, default=5984, help=HELP_PORT)
+@click.option("--username", required=False, type=NORMALIZED_STRING, help=HELP_USERNAME)
+@click.option("--password", required=False, type=NORMALIZED_STRING, help=HELP_PASSWORD)
+@click.option("--expiry-days", required=False, type=click.INT, default=365, help=HELP_EXPIRY)
+@click.argument('filename', metavar='<document>', type=click.Path(dir_okay=False))
+def command_cogsw_datastore_couchdb_publish(
+    host: str, port: int, username: str, password: str, expiry_days: int, filename: str):
     
     try:
         import couchdb
@@ -65,7 +70,7 @@ def command_datastore_couchdb_publish(host: str, port: int, username: str, passw
 
     dbsvr = couchdb.Server(connection)
 
-    cogsworth = dbsvr['cogsworth']
+    cogsworth = dbsvr[COGSWORTH_DB_BYPRODUCTS]
     cogsworth.save(docobj)
 
     return
