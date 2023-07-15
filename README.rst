@@ -1,8 +1,8 @@
 =======================
-python-package-template
+Cogsworth CLI Tools
 =======================
 
-This is a template repository that can be used to quickly create a python package project.
+Provides a set of CLI tools for working with the Cogsworth continuous integration system.
 
 ==========
 References
