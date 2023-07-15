@@ -1,6 +1,6 @@
-=========================================================
-Python Continuous Integration System - CLI Tools  (PyCIS)
-=========================================================
+========================================================
+Python Continuous Integration System (PyCIS) - CLI Tools
+========================================================
 
 Provides a set of CLI tools for working with the PyCIS continuous integration system.
 
