@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "pycis-cli"
 description = "Python Continuous Integration System (PyCIS) - CLI Tools"
-version = "0.0.2"
+version = "0.0.3"
 authors = []
 readme = "README.rst"
 license = "LICENSE.txt"
@@ -23,7 +23,7 @@ couchdb = {version = "^1.2", optional = true}
 mojo-xmodules = ">=0.0.55 <0.1.0"
 
 [tool.poetry.scripts]
-greet = "pycis.cli.pycis_command:pycis_root_command"
+pycis = "pycis.cli.pycis_command:pycis_root_command"
 
 [tool.poetry.extras]
 mongodb = ["pymongo"]
