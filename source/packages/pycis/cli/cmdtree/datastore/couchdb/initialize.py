@@ -76,7 +76,7 @@ def command_pycis_datastore_couchdb_initialize(
 
     dbsvr = couchdb.Server(connection)
 
-    if 'testresults' not in dbsvr:
+    if PYCIS_DB_BYPRODUCTS not in dbsvr:
 
         database = dbsvr.create(PYCIS_DB_BYPRODUCTS)
 
