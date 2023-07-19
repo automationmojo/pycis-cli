@@ -36,7 +36,7 @@ def command_pycis_document_build_initialize(
     release: str, archive: str, filename: str):
     
     buildobj = {
-        "id": id,
+        "_id": id,
         "dtype": "build",
         "dversion": "1.0",
         "start": start,

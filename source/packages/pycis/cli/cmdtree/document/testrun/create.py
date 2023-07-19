@@ -31,6 +31,9 @@ def command_pycis_document_testrun_create(results: str, filename: str):
     with open(summary_file, 'r') as sf:
         summary = json.load(sf)
 
+    summary["_id"] = summary["runid"]
+    del summary["runid"]
+
     trstream = load_jsos_stream_from_file(testresults_file)
 
     document = {
