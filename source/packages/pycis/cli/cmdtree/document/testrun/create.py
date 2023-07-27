@@ -19,7 +19,7 @@ from mojo.xmods.xclick import NORMALIZED_STRING
 
 HELP_RESULTS = "A folder containing test results to publish"
 HELP_EXPIRY = "A number of days to persist the up uploaded results."
-HELP_ARCHIVE = "An optional 'archive' value to set in the build document."
+HELP_ARCHIVE = "An optional 'archive' value to set in the test document."
 
 @click.command("create")
 @click.option("--results", required=True, type=click.Path(exists=True, file_okay=False), help=HELP_RESULTS)
