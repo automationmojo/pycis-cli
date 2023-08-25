@@ -32,7 +32,7 @@ OPTION_TYPE_CATEGORY = click.Choice(['build', 'testrun'])
 
 @click.command("publish")
 @click.option("--host", required=True, type=NORMALIZED_STRING, help=HELP_HOST)
-@click.option("--port", required=True, type=click.INT, default=5984, help=HELP_PORT)
+@click.option("--port", required=True, type=click.INT, default=27017, help=HELP_PORT)
 @click.option("--category", required=True, type=OPTION_TYPE_CATEGORY, help=HELP_CATEGORY)
 @click.option("--username", required=False, type=NORMALIZED_STRING, help=HELP_USERNAME)
 @click.option("--password", required=False, type=NORMALIZED_STRING, help=HELP_PASSWORD)
@@ -52,10 +52,6 @@ def command_pycis_datastore_mongodb_publish(
         errmsg = f"The specified document does not exist. filename={filename}"
         click.BadParameter(errmsg)
     
-    protocol = "http"
-    if host.find("http://") > -1 or host.find("https://") > -1:
-        protocol, host = host.split("://", 1)
-
     connection = f"{host}:{port}"
     if username is not None:
         if password is None:
@@ -63,7 +59,7 @@ def command_pycis_datastore_mongodb_publish(
             click.BadArgumentUsage(errmsg)
         connection = f"{username}:{password}@{connection}"
     
-    connection = f"{protocol}://{connection}"
+    connection = f"mongodb+srv://{connection}"
 
     expiry_date = datetime.now() + timedelta(days=expiry_days)
 
@@ -73,10 +69,12 @@ def command_pycis_datastore_mongodb_publish(
 
     docobj["expiry_date"] = expiry_date.isoformat()
 
+    database = ""
+
     from pymongo import MongoClient
 
-    client = MongoClient(connection)
-
+    client = MongoClient(host, port)
+    
     pycisdb = client[PYCIS_DB_BYPRODUCTS]
 
     testruns = pycisdb[category]
