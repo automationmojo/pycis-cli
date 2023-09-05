@@ -12,6 +12,8 @@ import click
 
 from pycis.cli.cmdtree.document.build \
     import group_pycis_document_build
+from pycis.cli.cmdtree.document.configuration \
+    import group_pycis_document_configuration
 from pycis.cli.cmdtree.document.testrun \
     import group_pycis_document_testrun
 
@@ -22,6 +24,9 @@ def group_pycis_document():
 
 group_pycis_document.add_command(
     group_pycis_document_build
+)
+group_pycis_document.add_command(
+    group_pycis_document_configuration
 )
 group_pycis_document.add_command(
     group_pycis_document_testrun
