@@ -22,7 +22,7 @@ from pycis.cli.cmdtree.datastore.constants import PYCIS_DB_BYPRODUCTS
 
 HELP_HOST = "A MongoDB host name."
 HELP_PORT = "The MongoDB port number."
-HELP_CATEGORY = ""
+HELP_CATEGORY = "The 'category' under which the document should be organized."
 HELP_USERNAME = "The MongoDB username who can write to a database."
 HELP_PASSWORD = "The MongoDB password for the specified user."
 HELP_EXPIRY = "A number of days to persist the up uploaded results."
