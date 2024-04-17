@@ -75,7 +75,7 @@ def command_pycis_datastore_couchdb_publish(
     if category != None:
         if "_id" in docobj:
             docid = docobj["_id"]
-            if docid.find(category) < -1:
+            if docid.find(category) < 0:
                 docid = f"{category}-{docid}"
                 docobj["_id"] = docid
         else:
