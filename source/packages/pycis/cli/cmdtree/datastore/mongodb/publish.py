@@ -81,3 +81,9 @@ def command_pycis_datastore_mongodb_publish(
     testruns.insert_one(docobj)
 
     return
+
+def add_groups_and_commands(parent: click.Group):
+    
+    parent.add_command(command_pycis_datastore_mongodb_publish)
+
+    return

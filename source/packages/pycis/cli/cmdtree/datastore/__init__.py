@@ -18,5 +18,33 @@ datastore_HELP = "Contains commands groups for datastore test results to differe
 def group_pycis_datastore():
     return
 
+
 group_pycis_datastore.add_command(group_pycis_datastore_couchdb)
 group_pycis_datastore.add_command(group_pycis_datastore_mongodb)
+
+
+def add_groups_and_commands(parent: click.Group):
+    
+    try:
+        # If we can import 'couchdb', add the appropriate cli commands
+        import couchdb
+
+        from pycis.cli.cmdtree.datastore.couchdb import add_groups_and_commands as couchdb_add_groups_and_commands
+
+        couchdb_add_groups_and_commands(group_pycis_datastore)
+    except ImportError:
+        pass
+    
+    try:
+         # If we can import 'pymongo', add the appropriate cli commands
+        import pymongo
+        
+        from pycis.cli.cmdtree.datastore.mongodb import add_groups_and_commands as mongodb_add_groups_and_commands
+
+        mongodb_add_groups_and_commands(group_pycis_datastore)
+    except ImportError:
+        pass
+
+    parent.add_command(group_pycis_datastore)
+
+    return

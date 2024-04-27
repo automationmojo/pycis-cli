@@ -97,3 +97,10 @@ def command_pycis_datastore_couchdb_initialize(
         database.save( data )
 
     return
+
+
+def add_groups_and_commands(parent: click.Group):
+    
+    parent.add_command(command_pycis_datastore_couchdb_initialize)
+
+    return

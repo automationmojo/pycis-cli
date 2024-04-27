@@ -27,18 +27,25 @@ from pycis.cli.cmdtree.document.build.update \
 def group_pycis_document_build():
     return
 
-group_pycis_document_build.add_command(
-    command_pycis_document_build_addbyproduct
-)
-group_pycis_document_build.add_command(
-    command_pycis_document_build_addchange
-)
-group_pycis_document_build.add_command(
-    command_pycis_document_build_initialize
-)
-group_pycis_document_build.add_command(
-    command_pycis_document_build_setjobdetail
-)
-group_pycis_document_build.add_command(
-    command_pycis_document_build_update
-)
+def add_groups_and_commands(parent: click.Group):
+
+    group_pycis_document_build.add_command(
+        command_pycis_document_build_addbyproduct
+    )
+    group_pycis_document_build.add_command(
+        command_pycis_document_build_addchange
+    )
+    group_pycis_document_build.add_command(
+        command_pycis_document_build_initialize
+    )
+    group_pycis_document_build.add_command(
+        command_pycis_document_build_setjobdetail
+    )
+    group_pycis_document_build.add_command(
+        command_pycis_document_build_update
+    )
+
+    parent.add_command(group_pycis_document_build)
+
+    return
+

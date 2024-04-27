@@ -19,6 +19,13 @@ from pycis.cli.cmdtree.document.testrun.create \
 def group_pycis_document_testrun():
     return
 
-group_pycis_document_testrun.add_command(
-    command_pycis_document_testrun_create
-)
+
+def add_groups_and_commands(parent: click.Group):
+
+    group_pycis_document_testrun.add_command(
+        command_pycis_document_testrun_create
+    )
+
+    parent.add_command(group_pycis_document_testrun)
+
+    return

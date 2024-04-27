@@ -21,9 +21,17 @@ from pycis.cli.cmdtree.document.configuration.encrypt \
 def group_pycis_document_configuration():
     return
 
-group_pycis_document_configuration.add_command(
-    command_pycis_document_configuration_decrypt
-)
-group_pycis_document_configuration.add_command(
-    command_pycis_document_configuration_encrypt
-)
+
+def add_groups_and_commands(parent: click.Group):
+    
+    group_pycis_document_configuration.add_command(
+        command_pycis_document_configuration_decrypt
+    )
+    group_pycis_document_configuration.add_command(
+        command_pycis_document_configuration_encrypt
+    )
+
+
+    parent.add_command(group_pycis_document_configuration)
+
+    return

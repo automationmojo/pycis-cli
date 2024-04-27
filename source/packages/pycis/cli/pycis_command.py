@@ -18,9 +18,6 @@ __license__ = "MIT"
 
 import click
 
-from pycis.cli.cmdtree.datastore import group_pycis_datastore
-from pycis.cli.cmdtree.document import group_pycis_document
-
 
 @click.group("pycis")
 @click.option('-v', '--verbose', count=True)
@@ -42,8 +39,11 @@ def pycis_root_command(ctx, verbose):
 
     return
 
-pycis_root_command.add_command(group_pycis_datastore)
-pycis_root_command.add_command(group_pycis_document)
+
+from pycis.cli.cmdtree import add_groups_and_commands
+
+add_groups_and_commands(pycis_root_command)
+
 
 if __name__ == '__main__':
     pycis_root_command()
