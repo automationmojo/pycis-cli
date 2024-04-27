@@ -139,11 +139,10 @@
                 "tracking",
                 "jira",
                 "--jira='https://myronwalker.atlassian.net'",
-                "--credential-source=~/mjr/config/credentials.yaml",
                 "--credential=jira-automation",
                 "comment",
                 "--jql='description ~ \"42FE2E4F-F6FA-4BF7-B6E2-B0D3841460B3\"'",
-                "--comment='Blah Blah Blah...'"
+                "--comment='Wah Wah Wah Wah...'"
             ],
             "console": "integratedTerminal",
             "justMyCode": false

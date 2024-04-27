@@ -24,6 +24,14 @@ import click
 @click.pass_context
 def pycis_root_command(ctx, verbose):
 
+    from mojo.config.configurationsettings import establish_config_settings
+    from mojo.config.variables import resolve_configuration_variables
+
+    # We set this so pycis standalone use will have references, but if it is run in a runtime configuration
+    # these may be changed by the MJR_NAME and MJR_HOME_DIRECTORY settings from the runtime.
+    establish_config_settings(name="PyCIS", home_dir="~/pycis")
+    resolve_configuration_variables()
+
     if verbose == 0:
         ctx.interactive = True
     else:
