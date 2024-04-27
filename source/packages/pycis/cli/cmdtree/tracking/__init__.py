@@ -18,9 +18,13 @@ def group_pycis_tracking():
 
 def add_groups_and_commands(parent: click.Group):
 
-    from pycis.cli.cmdtree.tracking.jira import add_groups_and_commands as jira_add_groups_and_commands
+    try:
+        from pycis.cli.cmdtree.tracking.jira import add_groups_and_commands as jira_add_groups_and_commands
 
-    jira_add_groups_and_commands(group_pycis_tracking)
+        jira_add_groups_and_commands(group_pycis_tracking)
+    except ImportError:
+        # If jira is not installed, just don't add it
+        pass
 
     parent.add_command(group_pycis_tracking)
 
