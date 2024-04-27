@@ -18,6 +18,7 @@ import click
 import requests
 
 from mojo.credentials.apitokencredential import ApiTokenCredential
+from mojo.credentials.personalapitokencredential import PersonalApiTokenCredential
 from mojo.credentials.basiccredential import BasicCredential
 
 from mojo.xmods.xclick import NORMALIZED_STRING
@@ -33,7 +34,7 @@ HELP_CREDENTIAL = "The name of a Jira credential to use from the specified crede
 @click.option("--jira", "jirahost", required=True, type=NORMALIZED_STRING, help=HELP_JQL)
 @click.option("--jql", "jql", required=True, multiple=True, type=NORMALIZED_STRING, help=HELP_JQL)
 @click.option("--comment", required=False, type=NORMALIZED_STRING, help=HELP_COMMENT)
-@click.option("--comment-source", required=True, type=NORMALIZED_STRING, help=HELP_COMMENT_SOURCE)
+@click.option("--comment-source", required=False, type=NORMALIZED_STRING, help=HELP_COMMENT_SOURCE)
 @click.option("--credential", required=True, type=NORMALIZED_STRING, help=HELP_CREDENTIAL)
 @click.option("--credential-source", required=False, default=None, type=NORMALIZED_STRING, help=HELP_COMMENT_SOURCE)
 @click.option("--limit", required=False, default=1, help=HELP_LIMIT)
@@ -88,6 +89,8 @@ def command_pycis_tracking_jira_comment(jirahost: str, jql: List[str], comment: 
     
     if isinstance(jiracred, BasicCredential):
         jclient = JIRA(jirahost, basic_auth=(jiracred.username, jiracred.password))
+    elif isinstance(jiracred, PersonalApiTokenCredential):
+        jclient = JIRA(jirahost, basic_auth=(jiracred.username, jiracred.token))
     elif isinstance(jiracred, ApiTokenCredential):
         jclient = JIRA(jirahost, token_auth=jiracred.token)
     else:

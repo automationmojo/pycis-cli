@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "Python: Current File",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
@@ -15,7 +15,7 @@
         },
         {
             "name": "Doc: Build - Initialize",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/source/packages/pycis/cli/pycis_command.py",
             "envFile": "${workspaceFolder}/.env",
@@ -35,7 +35,7 @@
         },
         {
             "name": "Doc: Build - Add By-Product",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/source/packages/pycis/cli/pycis_command.py",
             "envFile": "${workspaceFolder}/.env",
@@ -57,7 +57,7 @@
         },
         {
             "name": "Doc: Build - Add Change",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/source/packages/pycis/cli/pycis_command.py",
             "envFile": "${workspaceFolder}/.env",
@@ -77,7 +77,7 @@
         },
         {
             "name": "Doc: Build - Set Job Detail",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/source/packages/pycis/cli/pycis_command.py",
             "envFile": "${workspaceFolder}/.env",
@@ -98,7 +98,7 @@
         },
         {
             "name": "Doc: Build - Update",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/source/packages/pycis/cli/pycis_command.py",
             "envFile": "${workspaceFolder}/.env",
@@ -115,7 +115,7 @@
         },
         {
             "name": "Doc: TestRun - Create",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/source/packages/pycis/cli/pycis_command.py",
             "envFile": "${workspaceFolder}/.env",
@@ -125,6 +125,25 @@
                 "create",
                 "--results=/home/myron/mjr/results/testresults/2023-06-25T2106!48.804103",
                 "${workspaceFolder}/source/examples/gen-testrun.json"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Tracking: Jira - Comment",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/source/packages/pycis/cli/pycis_command.py",
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "tracking",
+                "jira",
+                "comment",
+                "--jira='https://myronwalker.atlassian.net'",
+                "--credential-source=~/mjr/config/credentials.yaml",
+                "--credential=jira-automation",
+                "--jql='description ~ \"42FE2E4F-F6FA-4BF7-B6E2-B0D3841460B3\"'",
+                "--comment='Blah Blah Blah...'"
             ],
             "console": "integratedTerminal",
             "justMyCode": false

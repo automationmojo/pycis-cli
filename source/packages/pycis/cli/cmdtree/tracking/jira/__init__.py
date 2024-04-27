@@ -11,7 +11,7 @@ __license__ = "MIT"
 import click
 
 
-@click.group("document", help="Contains commands for interoperating with Jira tracking software and services.")
+@click.group("jira", help="Contains commands for interoperating with Jira tracking software and services.")
 def group_pycis_tracking_jira():
     return
 

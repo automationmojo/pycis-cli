@@ -90,3 +90,9 @@ def command_pycis_datastore_couchdb_publish(
     pycis.save(docobj)
 
     return
+
+def add_groups_and_commands(parent: click.Group):
+    
+    parent.add_command(command_pycis_datastore_couchdb_publish)
+
+    return
